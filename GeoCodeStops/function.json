@@ -1,0 +1,23 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "unicorn-peter-cosmos_DOCUMENTDB",
+      "databaseName": "Kairos",
+      "collectionName": "messages",
+      "createLeaseCollectionIfNotExists": "true"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "$return",
+      "databaseName": "Kairos",
+      "collectionName": "messages",
+      "createIfNotExists": true,
+      "connectionStringSetting": "unicorn-peter-cosmos_DOCUMENTDB",
+      "direction": "out"
+    }
+  ]
+}

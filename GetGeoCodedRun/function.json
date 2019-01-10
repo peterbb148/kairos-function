@@ -1,0 +1,38 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "GetGeoCodedRun/{runId}"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "run",
+      "databaseName": "Kairos",
+      "collectionName": "messages",
+      "connectionStringSetting": "unicorn-peter-cosmos_DOCUMENTDB",
+      "direction": "in",
+      "sqlQuery": "select * from c where c.header.documentName = 'MfpRunMessage' and c.document.id = {runId}"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "stops",
+      "databaseName": "Kairos",
+      "collectionName": "messages",
+      "connectionStringSetting": "unicorn-peter-cosmos_DOCUMENTDB",
+      "direction": "in",
+      "sqlQuery": "select * from c where c.header.documentName = 'GeoCodedStopMessage' and c.document.runId = {runId}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

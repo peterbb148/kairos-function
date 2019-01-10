@@ -1,0 +1,24 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "post"
+      ],
+      "route": "PersistEvent/{source}/{eventType}"
+    },
+    {
+      "type": "cosmosDB",
+      "name": "$return",
+      "databaseName": "Kairos",
+      "collectionName": "events",
+      "createIfNotExists": true,
+      "connectionStringSetting": "unicorn-peter-cosmos_DOCUMENTDB",
+      "direction": "out"
+    }
+  ]
+}
