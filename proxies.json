@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "importMfpRun": {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/runs"
+      },
+      "backendUri": "https://localhost/api/ImportMfpRunMessage"
+    },
+    "importMfpHeartBeat": {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/heartbeats"
+      },
+      "backendUri": "https://localhost/api/ImportMfpHeartBeatMessage"
+    },
+    "getGeoCodedRunProxy": {
+      "matchCondition": {
+        "methods": ["GET"],
+        "route": "/geocoded-runs/{runId}"
+      },
+      "backendUri": "https://localhost/api/GetGeoCodedRun/{runId}"
+    },
+    "persistEventProxy" : {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/events/{source}/{eventType}"
+      },
+      "backendUri": "https://localhost/api/PersistEvent/{source}/{eventType}"
+    },
+    "importCdmShipmentInstructionMessageProxy": {
+      "matchCondition": {
+        "methods": ["POST"],
+        "route": "/cdm-documents/shipment-instructions"
+      },
+      "backendUri": "https://localhost/api/ImportCdmShipmentInstructionMessage"
+    }
+  }
+}
